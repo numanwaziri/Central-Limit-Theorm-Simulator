@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900i");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+graph {
+    height: 300px;
+    width: 300px;
+    background: lightgray;
+    position: relative;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+}
+graph:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: 3px solid transparent;
+    border-bottom-color: black;
+    top: -5px;
+    left: 50%;
+    border-radius: 50%;
+    transform: rotate(45deg);
+}
+
+
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.38);
+}
+
+.noscroll {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/*Scroll Down Indicator*/
+#sd {
+    &-container {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.arrow {
+    position: relative;
+    width: 32px;
+    height: 16px;
+    opacity: 0;
+
+    &::before,
+    &::after {
+        content: "";
+        width:16px;
+        height: 2px;
+        background-color: #fff;
+        border-radius: 2px;
+        display: inline-block;
+    }
+
+    &::before {
+        transform: rotate(45deg) translateX(25%)
+    }
+
+    &::after {
+        transform: rotate(-45deg) translateX(-25%)
+    }
+
+    &:nth-child(1) {
+        top: -50px;
+        opacity: 1;
+        animation: arrow2 2s ease 0s infinite;
+    }
+
+    &:nth-child(2) {
+        top: -25px;
+        animation: arrow1 2s ease 0.5s infinite;
+    }
+}
+
+@keyframes arrow1 {
+    from {
+        opacity: 0;
+        top: -25px;
+    }
+
+    to {
+        opacity: 0;
+        top: 0px;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes arrow2 {
+    from {
+        opacity: 0;
+        top: -35px;
+    }
+
+    to {
+        opacity: 0;
+        top: -10px;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+
+
+.normal_path {
+    transition: stroke 0.3s ease, filter 0.3s ease;
+}
+
+.normal_path.glow {
+    stroke: #818cf8; /* Keep the same stroke color */
+    filter: drop-shadow(0 40px 25px #818cf8);
+}
+
+@keyframes pulseAnimation {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
